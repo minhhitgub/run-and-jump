@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1722824816 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
+1722827341 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
 	<SDL.h>
 	<stdio.h>
 	<SDL_image.h>
@@ -404,4 +404,6 @@
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
+
+1722827374 source:c:\users\bruh\documents\github\run-and-jump\image\image.cpp
 

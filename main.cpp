@@ -181,7 +181,7 @@ int main(int argc, char* argv[])
     }
 
 
-    SDL_Surface* surface = IMG_Load("bg.jpg");
+    SDL_Surface* surface = IMG_Load("image/bg.jpg");
     if (!surface) {
         printf ("Unable to load image!\n");
         SDL_GetError();
@@ -213,11 +213,11 @@ int main(int argc, char* argv[])
         render(renderer, backgroundTexture , player);
         SDL_Delay(16.67);
     }
-
     SDL_DestroyTexture(backgroundTexture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+    IMG_Quit();
     return 0;
 }
 
