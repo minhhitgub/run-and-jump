@@ -92,7 +92,7 @@ void update(Player& player)
 }
 
 bool checkCollision(const SDL_Rect& player, const SDL_Rect& obs) {
-    if(player.x + player.w <= obs.x || player.x >= player.x + obs.w || player.y + player.h <= obs.y || player.y >= obs.y + obs.h)
+    if(player.x + player.w <= obs.x || player.x >= obs.x + obs.w || player.y + player.h <= obs.y || player.y >= obs.y + obs.h)
     {
         return false;
     }
@@ -100,10 +100,26 @@ bool checkCollision(const SDL_Rect& player, const SDL_Rect& obs) {
 }
 
 void handleCollisions(Player& player) {
+    SDL_Rect playerRect = { player.x, player.y, PLAYER_WIDTH, PLAYER_HEIGHT };
+    for (const auto& obs : obstacles) {
+        if (checkCollision(playerRect, obs.rect)) {
+                if (playerRect.y + playerRect.h > obs.rect.y) {
+                player.y = obs.rect.y - PLAYER_HEIGHT;
+                player.vy = 0;
+                player.isJumping = false;
+            } else if ( playerRect.y < obs.rect.y + obs.rect.h) {
+                player.y = obs.rect.y + obs.rect.h;
+                player.vy = 0;
+            }
+            if ( playerRect.x + playerRect.w > obs.rect.x) {
+                player.x = obs.rect.x - PLAYER_WIDTH;
+            } else if ( playerRect.x < obs.rect.x + obs.rect.w) {
+                player.x = obs.rect.x + obs.rect.w;
+            }
 
-
+        }
+    }
 }
-
 
 void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& player)
 {
