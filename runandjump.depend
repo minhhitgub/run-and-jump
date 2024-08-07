@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1723043955 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
+1723044923 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
 	<SDL.h>
 	<stdio.h>
 	<SDL_image.h>
+	<SDL_mixer.h>
 	<vector>
 	"headers/functions.hpp"
 	"headers/constants.hpp"
@@ -440,9 +441,10 @@
 	<vector>
 	"constants.hpp"
 
-1723044347 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
+1723045312 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
 	<vector>
 	<SDL.h>
+	<SDL_mixer.h>
 
 1723036239 c:\users\bruh\documents\github\run-and-jump\headers\handlecollision.cpp
 	<SDL.h>
@@ -452,7 +454,7 @@
 	"HandleCollision.hpp"
 	"constants.hpp"
 
-1723043071 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
+1723045389 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
 	<SDL.h>
 	<stdio.h>
 	<SDL_image.h>
@@ -466,10 +468,10 @@
 	<vector>
 	"constants.hpp"
 
-1723044539 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
+1723045139 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
 	"constants.hpp"
 
-1723044573 source:c:\users\bruh\documents\github\run-and-jump\headers\load.cpp
+1723045463 source:c:\users\bruh\documents\github\run-and-jump\headers\load.cpp
 	<SDL.h>
 	<stdio.h>
 	"constants.hpp"
@@ -485,4 +487,13 @@
 
 1723044539 c:\users\bruh\documents\github\run-and-jump\headers\load.hpp
 	<stdio.h>
+
+1705857752 c:\users\bruh\documents\github\run-and-jump\sdl2_mixer\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
 

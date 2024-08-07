@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <SDL.h>
+#include <SDL_mixer.h>
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -35,5 +36,7 @@ extern SDL_Surface* surface;
 extern SDL_Texture* backgroundTexture;
 
 extern SDL_Window* window;
+
+extern Mix_Music* gMusic;
 
 #endif

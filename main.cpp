@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <stdio.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include <vector>
 #include "headers/functions.hpp"
 #include "headers/constants.hpp"
