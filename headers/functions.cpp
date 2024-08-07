@@ -65,13 +65,16 @@ void processInput(Player& player, bool& running)
                     running = false;
                 case SDLK_LEFT:
                     player.vx = -PLAYER_SPEED;
+                    currentState = RUN;
                     break;
                 case SDLK_RIGHT:
                     player.vx = PLAYER_SPEED;
+                    currentState = RUN;
                     break;
                 case SDLK_SPACE:
                     if (!player.isJumping) {
                         player.vy = JUMP_SPEED;
+                        currentState = JUMP;
                         player.isJumping = true;
                     }
                     break;
@@ -83,6 +86,7 @@ void processInput(Player& player, bool& running)
                 case SDLK_LEFT:
                 case SDLK_RIGHT:
                     player.vx = 0;
+                    currentState = NEUTRAL;
                     break;
             }
         }
@@ -119,9 +123,26 @@ void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& play
 
     SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
 
-    SDL_Rect playerRect = { player.x, player.y, PLAYER_WIDTH, PLAYER_HEIGHT };
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderFillRect(renderer, &playerRect);
+    SDL_Texture* currentTexture = nullptr;
+    switch (currentState) {
+        case NEUTRAL:
+            currentTexture = neutralTexture;
+            break;
+        case RUN:
+            currentTexture = runTexture;
+            break;
+        case JUMP:
+            currentTexture = jumpTexture;
+            break;
+        case ATTACK:
+            currentTexture = attackTexture;
+            break;
+    }
+
+    if (currentTexture) {
+        SDL_Rect playerRect = { player.x, player.y, PLAYER_WIDTH, PLAYER_HEIGHT };
+        SDL_RenderCopy(renderer, currentTexture, NULL, &playerRect);
+    }
 
     SDL_SetRenderDrawColor(renderer, 139, 69, 19, 255);
     for (const auto& obstacle : obstacles) {

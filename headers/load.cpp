@@ -46,6 +46,87 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         return -1;
     }
 
+    SDL_Surface* surface = IMG_Load("image/playerNeutral.png");
+    if (!surface) {
+        printf("Unable to load image: %s\n", IMG_GetError());
+        return -1;
+    }
+    neutralTexture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+    if (!neutralTexture) {
+        printf("Unable to create texture: %s\n", SDL_GetError());
+        return -1;
+    }
+
+
+    surface = IMG_Load("image/playerRun.png");
+    if (!surface) {
+        printf("Unable to load image: %s\n", IMG_GetError());
+        return -1;
+    }
+    runTexture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+    if (!runTexture) {
+        printf("Unable to create texture: %s\n", SDL_GetError());
+        return -1;
+    }
+
+
+    surface = IMG_Load("image/playerAttack.png");
+    if (!surface) {
+        printf("Unable to load image: %s\n", IMG_GetError());
+        return -1;
+    }
+    attackTexture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+    if (!runTexture) {
+        printf("Unable to create texture: %s\n", SDL_GetError());
+        return -1;
+    }
+
+    surface = IMG_Load("image/playerJump.png");
+    if (!surface) {
+        printf("Unable to load image: %s\n", IMG_GetError());
+        return -1;
+    }
+
+    jumpTexture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    SDL_FreeSurface(surface);
+    if (!runTexture) {
+        printf("Unable to create texture: %s\n", SDL_GetError());
+        return -1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     if (Mix_Init(MIX_INIT_MP3) == 0)
         {
             printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());

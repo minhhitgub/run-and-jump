@@ -27,6 +27,20 @@ struct obstacle {
     SDL_Rect rect;
 };
 
+enum playerState {
+    NEUTRAL,
+    RUN,
+    JUMP,
+    ATTACK
+};
+
+extern playerState currentState;
+
+extern SDL_Texture* neutralTexture;
+extern SDL_Texture* runTexture;
+extern SDL_Texture* jumpTexture;
+extern SDL_Texture* attackTexture;
+
 extern std::vector<obstacle> obstacles;
 
 extern SDL_Renderer* renderer;
