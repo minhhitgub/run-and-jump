@@ -1,7 +1,7 @@
 #include <SDL.h>
 #include<SDL_image.h>
 #include<vector>
-#include"constants.hpp"
+#include "constants.hpp"
 
 void initObstacle();
 
@@ -14,3 +14,5 @@ void processInput(Player& player, bool& running);
 void update(Player& player);
 
 void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& player);
+
+void destroy();

@@ -28,6 +28,12 @@ struct obstacle {
 
 extern std::vector<obstacle> obstacles;
 
+extern SDL_Renderer* renderer;
 
+extern SDL_Surface* surface;
+
+extern SDL_Texture* backgroundTexture;
+
+extern SDL_Window* window;
 
 #endif

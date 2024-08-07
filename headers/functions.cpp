@@ -61,6 +61,8 @@ void processInput(Player& player, bool& running)
         }
         else if (e.type == SDL_KEYDOWN) {
             switch (e.key.keysym.sym) {
+                case SDLK_ESCAPE:
+                    running = false;
                 case SDLK_LEFT:
                     player.vx = -PLAYER_SPEED;
                     break;
@@ -107,6 +109,7 @@ void update(Player& player)
 
     if (player.x < 0) player.x = 0;
     if (player.x + PLAYER_WIDTH > SCREEN_WIDTH) player.x = SCREEN_WIDTH - PLAYER_WIDTH;
+    handleCollision(player);
 }
 
 
@@ -126,4 +129,13 @@ void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& play
     }
 
     SDL_RenderPresent(renderer);
+}
+
+void destroy()
+{
+    SDL_DestroyTexture(backgroundTexture);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    IMG_Quit();
 }

@@ -45,6 +45,8 @@
 		<Unit filename="headers/constants.hpp" />
 		<Unit filename="headers/functions.cpp" />
 		<Unit filename="headers/functions.hpp" />
+		<Unit filename="headers/load.cpp" />
+		<Unit filename="headers/load.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
