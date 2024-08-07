@@ -1,9 +1,11 @@
 # depslib dependency file v1.0
-1722827341 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
+1723037758 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
 	<SDL.h>
 	<stdio.h>
 	<SDL_image.h>
 	<vector>
+	"headers/functions.hpp"
+	"headers/constants.hpp"
 
 1722782976 c:\users\bruh\documents\github\run-and-jump\sdl2\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -406,4 +408,63 @@
 	"close_code.h"
 
 1722827374 source:c:\users\bruh\documents\github\run-and-jump\image\image.cpp
+
+1723035329 source:c:\users\bruh\documents\github\run-and-jump\handlecollision\handlecollision.cpp
+	<SDL.h>
+	<stdio.h>
+	<SDL_image.h>
+	<vector>
+	"HandleCollision.hpp"
+
+1722827790 c:\users\bruh\documents\github\run-and-jump\handlecollision\handlecollision.hpp
+
+1723035329 c:\users\bruh\documents\github\run-and-jump\handlecollision\handlecollision.cpp
+	<SDL.h>
+	<stdio.h>
+	<SDL_image.h>
+	<vector>
+	"HandleCollision.hpp"
+
+1723036239 source:c:\users\bruh\documents\github\run-and-jump\headers\handlecollision.cpp
+	<SDL.h>
+	<stdio.h>
+	<SDL_image.h>
+	<vector>
+	"HandleCollision.hpp"
+	"constants.hpp"
+
+1723036742 c:\users\bruh\documents\github\run-and-jump\headers\handlecollision.hpp
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"constants.hpp"
+
+1723037595 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
+	<vector>
+	<SDL.h>
+
+1723036239 c:\users\bruh\documents\github\run-and-jump\headers\handlecollision.cpp
+	<SDL.h>
+	<stdio.h>
+	<SDL_image.h>
+	<vector>
+	"HandleCollision.hpp"
+	"constants.hpp"
+
+1723037753 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
+	<SDL.h>
+	<stdio.h>
+	<SDL_image.h>
+	<vector>
+	"functions.hpp"
+	"constants.hpp"
+
+1723037753 c:\users\bruh\documents\github\run-and-jump\headers\functions.hpp
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"constants.hpp"
+
+1723037542 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
+	"constants.hpp"
 

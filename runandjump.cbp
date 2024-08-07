@@ -41,10 +41,10 @@
 			<Add directory="C:/Users/bruh/Documents/GitHub/run-and-jump/sdl2_image/lib" />
 			<Add directory="C:/Users/bruh/Documents/GitHub/run-and-jump/SDL2_mixer/lib" />
 		</Linker>
-		<Unit filename="HandleCollision/HandleCollision.hpp" />
-		<Unit filename="HandleCollision/handleCollision.cpp" />
-		<Unit filename="image/image.cpp" />
-		<Unit filename="image/image.hpp" />
+		<Unit filename="headers/constants.cpp" />
+		<Unit filename="headers/constants.hpp" />
+		<Unit filename="headers/functions.cpp" />
+		<Unit filename="headers/functions.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
