@@ -7,8 +7,9 @@
 
 void initObstacle()
 {
-    obstacles.push_back(obstacle {SDL_Rect{200, GROUND - 100, 100, 100}});
+    obstacles.push_back(obstacle {SDL_Rect{300, 200, 100, 100}});
     obstacles.push_back(obstacle {SDL_Rect{500, GROUND - 150, 100, 150}});
+    obstacles.push_back(obstacle {SDL_Rect{300, -200, 100, 100}});
 }
 
 bool checkCollision(const SDL_Rect& player, const SDL_Rect& obs) {
@@ -28,7 +29,7 @@ void handleCollision(Player& player) {
                     player.y = obs.rect.y - PLAYER_HEIGHT;
                     player.vy = 0;
                     player.isJumping = false;
-                } else if (player.vy < 0 && playerRect.y >= obs.rect.y + obs.rect.h - player.vy) {
+                } else if (player.vy < 0 && playerRect.y >= obs.rect.y + obs.rect.h + player.vy) {
 
                     player.y = obs.rect.y + obs.rect.h;
                     player.vy = 0;
@@ -66,10 +67,12 @@ void processInput(Player& player, bool& running)
                 case SDLK_LEFT:
                     player.vx = -PLAYER_SPEED;
                     currentState = RUN;
+                    player.flip = SDL_FLIP_NONE;
                     break;
                 case SDLK_RIGHT:
                     player.vx = PLAYER_SPEED;
                     currentState = RUN;
+                    player.flip = SDL_FLIP_HORIZONTAL;
                     break;
                 case SDLK_SPACE:
                     if (!player.isJumping) {
@@ -94,7 +97,7 @@ void processInput(Player& player, bool& running)
 }
 
 
-void update(Player& player)
+void update(Player& player, Lava& lava, SDL_Rect& camera)
 {
 
     player.x += player.vx;
@@ -114,12 +117,26 @@ void update(Player& player)
     if (player.x < 0) player.x = 0;
     if (player.x + PLAYER_WIDTH > SCREEN_WIDTH) player.x = SCREEN_WIDTH - PLAYER_WIDTH;
     handleCollision(player);
+
+
+    lava.y -= lava.vy;
+    lava.rect.y = lava.y;
+
+    camera.y = lava.y + lava.rect.h - SCREEN_HEIGHT;
+    if (camera.y < 0) camera.y = 0;
+
+
+    if (player.y + PLAYER_HEIGHT > lava.y) {
+            printf("Game Over");
+        destroy();
+    }
 }
 
 
-void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& player)
+void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& player, Lava& lava, SDL_Rect& camera)
 {
     SDL_RenderClear(renderer);
+
 
     SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
 
@@ -138,16 +155,22 @@ void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& play
             currentTexture = attackTexture;
             break;
     }
-
-    if (currentTexture) {
-        SDL_Rect playerRect = { player.x, player.y, PLAYER_WIDTH, PLAYER_HEIGHT };
-        SDL_RenderCopy(renderer, currentTexture, NULL, &playerRect);
+if (currentTexture) {
+        SDL_Rect playerRect = { player.x - camera.x, player.y - camera.y, PLAYER_WIDTH, PLAYER_HEIGHT };
+        SDL_RenderCopyEx(renderer, currentTexture, NULL, &playerRect, 0, NULL, player.flip);
     }
+
 
     SDL_SetRenderDrawColor(renderer, 139, 69, 19, 255);
     for (const auto& obstacle : obstacles) {
-    SDL_RenderFillRect(renderer, &obstacle.rect);
+        SDL_Rect obstacleRect = { obstacle.rect.x - camera.x, obstacle.rect.y - camera.y, obstacle.rect.w, obstacle.rect.h };
+        SDL_RenderFillRect(renderer, &obstacleRect);
     }
+
+
+    SDL_SetRenderDrawColor(renderer, 255, 69, 0, 255);
+    SDL_Rect lavaRect = { lava.rect.x - camera.x, lava.rect.y - camera.y, lava.rect.w, lava.rect.h };
+    SDL_RenderFillRect(renderer, &lavaRect);
 
     SDL_RenderPresent(renderer);
 }

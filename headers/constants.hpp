@@ -8,19 +8,22 @@
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
-const int PLAYER_WIDTH = 20;
-const int PLAYER_HEIGHT = 20;
+const int PLAYER_WIDTH = 80;
+const int PLAYER_HEIGHT = 80;
 const int PLAYER_SPEED = 5;
 const int GRAVITY = 1;
 const int JUMP_SPEED = -20;
 
 const int GROUND = 450;
 
+const int LAVA_SPEED = 1;
+
 struct Player
 {
     int x, y;
     int vx, vy;
     bool isJumping;
+    SDL_RendererFlip flip;
 };
 
 struct obstacle {
@@ -34,6 +37,14 @@ enum playerState {
     ATTACK
 };
 
+struct Lava {
+    int y;
+    int vy;
+    SDL_Rect rect;
+};
+
+
+extern bool running;
 extern playerState currentState;
 
 extern SDL_Texture* neutralTexture;

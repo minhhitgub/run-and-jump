@@ -9,16 +9,16 @@
 
 int main(int argc, char* argv[])
  {
-
-    Player player = { 100, GROUND , 0, 0, false };
-    bool running = true;
-
     Load();
+    SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+    Player player = { 300, 10 , 0, 0, false };
+    Lava lava = {GROUND + 300, LAVA_SPEED, {0, GROUND, SCREEN_WIDTH, 10}};
+
 
     while (running) {
         processInput(player, running);
-        update(player);
-        render(renderer, backgroundTexture , player);
+        update(player, lava, camera);
+        render(renderer, backgroundTexture , player, lava, camera);
         SDL_Delay(16.67);
     }
 

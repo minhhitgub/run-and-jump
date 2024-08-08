@@ -11,8 +11,8 @@ void handleCollision(Player& player);
 
 void processInput(Player& player, bool& running);
 
-void update(Player& player);
+void update(Player& player, Lava& lava, SDL_Rect& camera);
 
-void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& player);
+void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& player, Lava& lava, SDL_Rect& camera);
 
 void destroy();
