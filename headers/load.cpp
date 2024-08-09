@@ -30,92 +30,56 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     }
 
 
-     surface = IMG_Load("image/bg.jpg");
-    if (!surface) {
-        printf ("Unable to load image!\n");
+    backgroundTexture[0] = loadTexture("image/bg1.png", renderer);
+    if (!backgroundTexture[0]) {
+        destroy();
+        return -1;
+    }
+
+    backgroundTexture[1] = loadTexture("image/bg2.png", renderer);
+    if (!backgroundTexture[1]) {
+        destroy();
+        return -1;
+    }
+
+    backgroundTexture[2] = loadTexture("image/bg3.png", renderer);
+    if (!backgroundTexture[2]) {
+        destroy();
+        return -1;
+    }
+
+    backgroundTexture[3] = loadTexture("image/bg4.png", renderer);
+    if (!backgroundTexture[3]) {
         destroy();
         return -1;
     }
 
 
-    backgroundTexture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
-    if (!backgroundTexture) {
-        printf ("Unable to create texture from surface!\n");
-        destroy();
-        return -1;
-    }
-
-    SDL_Surface* surface = IMG_Load("image/playerNeutral.png");
-    if (!surface) {
-        printf("Unable to load image: %s\n", IMG_GetError());
-        return -1;
-    }
-    neutralTexture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
+    neutralTexture = loadTexture("image/playerNeutral.png", renderer);
     if (!neutralTexture) {
-        printf("Unable to create texture: %s\n", SDL_GetError());
+        destroy();
         return -1;
     }
 
 
-    surface = IMG_Load("image/playerRun.png");
-    if (!surface) {
-        printf("Unable to load image: %s\n", IMG_GetError());
-        return -1;
-    }
-    runTexture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
-    if (!runTexture) {
-        printf("Unable to create texture: %s\n", SDL_GetError());
+    runTexture = loadTexture("image/playerRun.png", renderer);
+    if (!neutralTexture) {
+        destroy();
         return -1;
     }
 
 
-    surface = IMG_Load("image/playerAttack.png");
-    if (!surface) {
-        printf("Unable to load image: %s\n", IMG_GetError());
-        return -1;
-    }
-    attackTexture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
-    if (!runTexture) {
-        printf("Unable to create texture: %s\n", SDL_GetError());
+    attackTexture = loadTexture("image/playerAttack.png", renderer);
+    if (!attackTexture) {
+        destroy();
         return -1;
     }
 
-    surface = IMG_Load("image/playerJump.png");
-    if (!surface) {
-        printf("Unable to load image: %s\n", IMG_GetError());
+    jumpTexture = loadTexture("image/playerJump.png", renderer);
+    if (!jumpTexture) {
+        destroy();
         return -1;
     }
-
-    jumpTexture = SDL_CreateTextureFromSurface(renderer, surface);
-
-    SDL_FreeSurface(surface);
-    if (!runTexture) {
-        printf("Unable to create texture: %s\n", SDL_GetError());
-        return -1;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

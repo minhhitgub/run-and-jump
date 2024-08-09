@@ -7,9 +7,15 @@
 
 void initObstacle()
 {
-    obstacles.push_back(obstacle {SDL_Rect{300, 200, 100, 100}});
-    obstacles.push_back(obstacle {SDL_Rect{500, GROUND - 150, 100, 150}});
-    obstacles.push_back(obstacle {SDL_Rect{300, -200, 100, 100}});
+    obstacles.push_back(obstacle {SDL_Rect{300, 800, 100, 100}});
+    obstacles.push_back(obstacle {SDL_Rect{600, 800, 100, 150}});
+    obstacles.push_back(obstacle {SDL_Rect{900, 1200, 100, 100}});
+    obstacles.push_back(obstacle {SDL_Rect{0, 400, 100, 100}});
+    obstacles.push_back(obstacle {SDL_Rect{600, 200, 100, 150}});
+    obstacles.push_back(obstacle {SDL_Rect{900, -200, 100, 100}});
+    obstacles.push_back(obstacle {SDL_Rect{900, 500, 200, 50}});
+    obstacles.push_back(obstacle {SDL_Rect{900, 900, 200, 50}});
+
 }
 
 bool checkCollision(const SDL_Rect& player, const SDL_Rect& obs) {
@@ -51,7 +57,6 @@ void handleCollision(Player& player) {
         }
     }
 }
-
 
 void processInput(Player& player, bool& running)
 {
@@ -106,14 +111,6 @@ void update(Player& player, Lava& lava, SDL_Rect& camera)
 
     player.vy += GRAVITY;
 
-
-    if (player.y + PLAYER_HEIGHT > GROUND ) {
-        player.y = GROUND - PLAYER_HEIGHT ;
-        player.vy = 0;
-        player.isJumping = false;
-    }
-    if (player.y == GROUND - 100){player.y == GROUND; }
-
     if (player.x < 0) player.x = 0;
     if (player.x + PLAYER_WIDTH > SCREEN_WIDTH) player.x = SCREEN_WIDTH - PLAYER_WIDTH;
     handleCollision(player);
@@ -129,16 +126,24 @@ void update(Player& player, Lava& lava, SDL_Rect& camera)
     if (player.y + PLAYER_HEIGHT > lava.y) {
             printf("Game Over");
         destroy();
+        exit(0);
     }
 }
 
 
-void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& player, Lava& lava, SDL_Rect& camera)
+void render(SDL_Renderer* renderer, Player& player, Lava& lava, SDL_Rect& camera)
 {
+    static int frame = 0;
+    frame++;
+    if (frame > 100){
+        frame = 0;
+    }
+
+    SDL_Texture* currentBackground = backgroundTexture[frame/30 % 4];
+
     SDL_RenderClear(renderer);
 
-
-    SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
+    SDL_RenderCopy(renderer, currentBackground, NULL, NULL);
 
     SDL_Texture* currentTexture = nullptr;
     switch (currentState) {
@@ -175,9 +180,28 @@ if (currentTexture) {
     SDL_RenderPresent(renderer);
 }
 
+SDL_Texture* loadTexture(const char* file_path, SDL_Renderer* renderer) {
+    SDL_Surface* surface = IMG_Load(file_path);
+    if (!surface) {
+        printf("Unable to load image");
+        return nullptr;
+    }
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+
+    if (!texture) {
+        printf("Unable to create texture");
+        return nullptr;
+    }
+
+    return texture;
+}
+
+
 void destroy()
 {
-    SDL_DestroyTexture(backgroundTexture);
+    SDL_DestroyTexture(backgroundTexture[1]);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

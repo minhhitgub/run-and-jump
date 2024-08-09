@@ -5,8 +5,8 @@
 #include <SDL.h>
 #include <SDL_mixer.h>
 
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
+const int SCREEN_WIDTH = 1600;
+const int SCREEN_HEIGHT = 900;
 
 const int PLAYER_WIDTH = 80;
 const int PLAYER_HEIGHT = 80;
@@ -14,7 +14,7 @@ const int PLAYER_SPEED = 5;
 const int GRAVITY = 1;
 const int JUMP_SPEED = -20;
 
-const int GROUND = 450;
+
 
 const int LAVA_SPEED = 1;
 
@@ -47,6 +47,7 @@ struct Lava {
 extern bool running;
 extern playerState currentState;
 
+extern SDL_Texture* backgroundTexture[4];
 extern SDL_Texture* neutralTexture;
 extern SDL_Texture* runTexture;
 extern SDL_Texture* jumpTexture;
@@ -57,8 +58,6 @@ extern std::vector<obstacle> obstacles;
 extern SDL_Renderer* renderer;
 
 extern SDL_Surface* surface;
-
-extern SDL_Texture* backgroundTexture;
 
 extern SDL_Window* window;
 

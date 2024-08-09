@@ -12,13 +12,13 @@ int main(int argc, char* argv[])
     Load();
     SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
     Player player = { 300, 10 , 0, 0, false };
-    Lava lava = {GROUND + 300, LAVA_SPEED, {0, GROUND, SCREEN_WIDTH, 10}};
+    Lava lava = {1600, LAVA_SPEED, {0, 1600, SCREEN_WIDTH, 10}};
 
 
     while (running) {
         processInput(player, running);
         update(player, lava, camera);
-        render(renderer, backgroundTexture , player, lava, camera);
+        render(renderer, player, lava, camera);
         SDL_Delay(16.67);
     }
 

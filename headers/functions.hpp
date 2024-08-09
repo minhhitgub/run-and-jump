@@ -13,6 +13,8 @@ void processInput(Player& player, bool& running);
 
 void update(Player& player, Lava& lava, SDL_Rect& camera);
 
-void render(SDL_Renderer* renderer, SDL_Texture* backgroundTexture, Player& player, Lava& lava, SDL_Rect& camera);
+void render(SDL_Renderer* renderer, Player& player, Lava& lava, SDL_Rect& camera);
+
+SDL_Texture* loadTexture(const char* file_path, SDL_Renderer* renderer);
 
 void destroy();
