@@ -11,8 +11,8 @@ int main(int argc, char* argv[])
  {
     Load();
     SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-    Player player = { 300, 10 , 0, 0, false };
-    Lava lava = {1600, LAVA_SPEED, {0, 1600, SCREEN_WIDTH, 10}};
+    Player player = { 300, LAVA_DEPTH - 500  , 0, 0, false };
+    Lava lava = {LAVA_DEPTH, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
 
 
     while (running) {

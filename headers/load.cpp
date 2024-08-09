@@ -29,6 +29,11 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         return -1;
     }
 
+    fireTexture = loadTexture("image/dragonFire.png", renderer);
+    if (!fireTexture) {
+        destroy();
+        return -1;
+    }
 
     backgroundTexture[0] = loadTexture("image/bg1.png", renderer);
     if (!backgroundTexture[0]) {
@@ -50,6 +55,12 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 
     backgroundTexture[3] = loadTexture("image/bg4.png", renderer);
     if (!backgroundTexture[3]) {
+        destroy();
+        return -1;
+    }
+
+    obstacleTexture = loadTexture("image/obstacle.png", renderer);
+    if (!obstacleTexture) {
         destroy();
         return -1;
     }
@@ -105,7 +116,11 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         return -1;
     }
 
-
+    hitTexture = loadTexture("image/playerHit.png", renderer);
+    if (!hitTexture) {
+        destroy();
+        return -1;
+    }
 
 
 
@@ -128,7 +143,7 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         }
 
 
-    gMusic = Mix_LoadMUS("music/ForestWalk.mp3");
+    gMusic = Mix_LoadMUS("music/backgroundMusic.mp3");
     if (!gMusic)
         {
             printf("Failed to load music: %s\n", Mix_GetError());

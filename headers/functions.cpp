@@ -7,19 +7,31 @@
 
 void initObstacle()
 {
-    obstacles.push_back(obstacle {SDL_Rect{300, 800, 100, 100}});
-    obstacles.push_back(obstacle {SDL_Rect{600, 800, 100, 150}});
-    obstacles.push_back(obstacle {SDL_Rect{900, 1200, 100, 100}});
-    obstacles.push_back(obstacle {SDL_Rect{0, 400, 100, 100}});
-    obstacles.push_back(obstacle {SDL_Rect{600, 200, 100, 150}});
-    obstacles.push_back(obstacle {SDL_Rect{900, -200, 100, 100}});
-    obstacles.push_back(obstacle {SDL_Rect{900, 500, 200, 50}});
-    obstacles.push_back(obstacle {SDL_Rect{900, 900, 200, 50}});
+
+    obstacles.push_back(obstacle {SDL_Rect{1000, LAVA_DEPTH - 2300, 50, 50}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{800, LAVA_DEPTH - 2100, 50, 50}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{600, LAVA_DEPTH - 1900, 50, 50}, 0});
+
+
+     obstacles.push_back(obstacle {SDL_Rect{400, LAVA_DEPTH - 1900, 100, 150}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{200, LAVA_DEPTH - 1700, 50, 50}, 0});
+
+
+    obstacles.push_back(obstacle {SDL_Rect{200, LAVA_DEPTH - 1500, 600, 50}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{1000, LAVA_DEPTH - 1500, 500, 50}, 0});
+
+    obstacles.push_back(obstacle {SDL_Rect{900, LAVA_DEPTH - 1300, 100, 100}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{700, LAVA_DEPTH - 1100, 100, 150}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{900, LAVA_DEPTH - 900, 100, 50}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{1100, LAVA_DEPTH - 700, 100, 100}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{900, LAVA_DEPTH - 600, 130, 50}, 2});
+    obstacles.push_back(obstacle {SDL_Rect{600, LAVA_DEPTH - 400, 200, 100}, 0});
+    obstacles.push_back(obstacle {SDL_Rect{300, LAVA_DEPTH - 300, 200, 50}, 0});
 
 }
 
-bool checkCollision(const SDL_Rect& player, const SDL_Rect& obs) {
-    return SDL_HasIntersection(&player, &obs);
+bool checkCollision(const SDL_Rect& obj1, const SDL_Rect& obj2) {
+    return SDL_HasIntersection(&obj1, &obj2);
 }
 
 
@@ -102,9 +114,16 @@ void processInput(Player& player, bool& running)
 }
 
 
+
+
 void update(Player& player, Lava& lava, SDL_Rect& camera)
 {
-
+    static int hp = 0;
+    static int frame = 0;
+    frame++;
+    if (frame > 200){
+        frame = 0;
+    }
     player.x += player.vx;
     player.y += player.vy;
 
@@ -128,14 +147,54 @@ void update(Player& player, Lava& lava, SDL_Rect& camera)
         destroy();
         exit(0);
     }
+
+
+    SDL_Rect fireRect;
+    if (frame > -1 && frame < 15 || frame > 99 && frame < 115) {
+        fireRect = {210 - camera.x, LAVA_DEPTH - 1650 - camera.y, 1300, 150};
+
+
+        SDL_Rect playerRect = {player.x - camera.x, player.y - camera.y, PLAYER_WIDTH, PLAYER_HEIGHT};
+        if (checkCollision(playerRect, fireRect)) {
+            if (currentState != HIT) {
+            currentState = HIT;
+            player.hitDuration = 60;
+            hp++;
+        }
+        if (hp == 200){
+            printf("Hit by fire. Game Over");
+            destroy();
+            exit(0);
+        }
+        }
+    }
+
+
+    for (auto it = obstacles.begin(); it != obstacles.end();) {
+        if (checkCollision(it->rect, lava.rect)) {
+            it = obstacles.erase(it);
+        } else {
+            it++;
+        }
+    }
+
+
+    for (auto& obs : obstacles) {
+        obs.rect.x += obs.vx;
+
+        if ( obs.rect.x + obs.rect.w > 1200 || obs.rect.x  < 600) {
+            obs.vx = -obs.vx;
+        }
+    }
 }
 
 
 void render(SDL_Renderer* renderer, Player& player, Lava& lava, SDL_Rect& camera)
 {
+    SDL_RendererFlip flipType = SDL_FLIP_HORIZONTAL;
     static int frame = 0;
     frame++;
-    if (frame > 100){
+    if (frame > 200){
         frame = 0;
     }
 
@@ -149,9 +208,22 @@ void render(SDL_Renderer* renderer, Player& player, Lava& lava, SDL_Rect& camera
 
     SDL_Texture* currentDragon = dragonTexture[frame/30 %4];
 
-    SDL_Rect dragonRect = { 100 , 300, 200, 200 };
+    SDL_Rect dragonRect = {0 - camera.x, LAVA_DEPTH - 1700 - camera.y, 200, 200 };
 
     SDL_RenderCopy(renderer, currentDragon, NULL, &dragonRect);
+
+    dragonRect = {1400 - camera.x, LAVA_DEPTH - 2000 - camera.y, 200, 200 };
+
+    SDL_RenderCopyEx(renderer, currentDragon, NULL, &dragonRect, 0, NULL, flipType);
+
+
+
+
+    if (frame > -1 && frame < 15 || frame > 99 && frame < 115  ){
+            SDL_Rect fireRect =   {210 - camera.x, LAVA_DEPTH - 1650 - camera.y, 1300, 150};
+
+            SDL_RenderCopy(renderer, fireTexture, NULL, &fireRect);
+            }
 
 
     SDL_Texture* currentTexture = nullptr;
@@ -168,6 +240,8 @@ void render(SDL_Renderer* renderer, Player& player, Lava& lava, SDL_Rect& camera
         case ATTACK:
             currentTexture = attackTexture;
             break;
+        case HIT:
+            currentTexture = hitTexture;
     }
     if (currentTexture) {
         SDL_Rect playerRect = { player.x - camera.x, player.y - camera.y, PLAYER_WIDTH, PLAYER_HEIGHT };
@@ -179,14 +253,14 @@ void render(SDL_Renderer* renderer, Player& player, Lava& lava, SDL_Rect& camera
 
     SDL_SetRenderDrawColor(renderer, 139, 69, 19, 255);
     for (const auto& obstacle : obstacles) {
-        SDL_Rect obstacleRect = { obstacle.rect.x - camera.x, obstacle.rect.y - camera.y, obstacle.rect.w, obstacle.rect.h };
-        SDL_RenderFillRect(renderer, &obstacleRect);
+        SDL_Rect obstacleRect = { obstacle.rect.x -camera.x, obstacle.rect.y -camera.y, obstacle.rect.w, obstacle.rect.h };
+        SDL_RenderCopy(renderer, obstacleTexture, NULL, &obstacleRect);
     }
 
 
     SDL_SetRenderDrawColor(renderer, 255, 69, 0, 255);
     SDL_Rect lavaRect = { lava.rect.x - camera.x, lava.rect.y - camera.y, lava.rect.w, lava.rect.h };
-    SDL_RenderFillRect(renderer, &lavaRect);
+
 
     SDL_RenderPresent(renderer);
 }
