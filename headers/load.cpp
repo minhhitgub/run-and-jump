@@ -54,6 +54,30 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         return -1;
     }
 
+    dragonTexture[0] = loadTexture("image/dragon1.png", renderer);
+    if (!dragonTexture[0]) {
+        destroy();
+        return -1;
+    }
+
+    dragonTexture[1] = loadTexture("image/dragon2.png", renderer);
+    if (!dragonTexture[1]) {
+        destroy();
+        return -1;
+    }
+
+    dragonTexture[2] = loadTexture("image/dragon3.png", renderer);
+    if (!dragonTexture[2]) {
+        destroy();
+        return -1;
+    }
+
+    dragonTexture[3] = loadTexture("image/dragon4.png", renderer);
+    if (!dragonTexture[3]) {
+        destroy();
+        return -1;
+    }
+
 
     neutralTexture = loadTexture("image/playerNeutral.png", renderer);
     if (!neutralTexture) {

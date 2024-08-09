@@ -145,6 +145,15 @@ void render(SDL_Renderer* renderer, Player& player, Lava& lava, SDL_Rect& camera
 
     SDL_RenderCopy(renderer, currentBackground, NULL, NULL);
 
+
+
+    SDL_Texture* currentDragon = dragonTexture[frame/30 %4];
+
+    SDL_Rect dragonRect = { 100 , 300, 200, 200 };
+
+    SDL_RenderCopy(renderer, currentDragon, NULL, &dragonRect);
+
+
     SDL_Texture* currentTexture = nullptr;
     switch (currentState) {
         case NEUTRAL:
@@ -160,10 +169,12 @@ void render(SDL_Renderer* renderer, Player& player, Lava& lava, SDL_Rect& camera
             currentTexture = attackTexture;
             break;
     }
-if (currentTexture) {
+    if (currentTexture) {
         SDL_Rect playerRect = { player.x - camera.x, player.y - camera.y, PLAYER_WIDTH, PLAYER_HEIGHT };
         SDL_RenderCopyEx(renderer, currentTexture, NULL, &playerRect, 0, NULL, player.flip);
     }
+
+
 
 
     SDL_SetRenderDrawColor(renderer, 139, 69, 19, 255);

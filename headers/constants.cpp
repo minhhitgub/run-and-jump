@@ -5,6 +5,7 @@
 SDL_Renderer* renderer = nullptr;
 SDL_Surface* surface = nullptr;
 SDL_Texture* backgroundTexture[4] = {nullptr};
+SDL_Texture* dragonTexture[4] = {nullptr};
 SDL_Texture* neutralTexture = nullptr;
 SDL_Texture* runTexture = nullptr;
 SDL_Texture* jumpTexture = nullptr;
