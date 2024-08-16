@@ -1,21 +1,18 @@
 #include "constants.hpp"
- std::vector<obstacle> obstacles;
 
-
+SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+Lava lava = {LAVA_DEPTH, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
 SDL_Renderer* renderer = nullptr;
 SDL_Surface* surface = nullptr;
 SDL_Texture* backgroundTexture[4] = {nullptr};
 SDL_Texture* obstacleTexture = nullptr;
 SDL_Texture* dragonTexture[4] = {nullptr};
-SDL_Texture* neutralTexture = nullptr;
-SDL_Texture* runTexture = nullptr;
-SDL_Texture* jumpTexture = nullptr;
-SDL_Texture* attackTexture = nullptr;
+
 SDL_Texture* fireTexture = nullptr;
 SDL_Texture* hitTexture = nullptr;
-playerState currentState = NEUTRAL;
 
-
+int frame = 0;
 bool running = true;
+bool checkPause = false;
 SDL_Window* window = nullptr;
 Mix_Music* gMusic = nullptr;

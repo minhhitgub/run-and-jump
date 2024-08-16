@@ -47,6 +47,12 @@
 		<Unit filename="headers/functions.hpp" />
 		<Unit filename="headers/load.cpp" />
 		<Unit filename="headers/load.hpp" />
+		<Unit filename="headers/object.cpp" />
+		<Unit filename="headers/object.hpp" />
+		<Unit filename="headers/platform.cpp" />
+		<Unit filename="headers/platform.hpp" />
+		<Unit filename="headers/player.cpp" />
+		<Unit filename="headers/player.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

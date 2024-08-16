@@ -1,28 +1,83 @@
-#include <SDL.h>
-#include <stdio.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
-#include <vector>
+
 #include "headers/functions.hpp"
 #include "headers/constants.hpp"
 #include "headers/load.hpp"
+#include "headers/player.hpp"
+#include "headers/object.hpp"
+
+
+
 
 int main(int argc, char* argv[])
  {
+
     Load();
-    SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-    Player player = { 300, LAVA_DEPTH - 500  , 0, 0, false };
-    Lava lava = {LAVA_DEPTH, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
+
+
+    Player player;
+    Object object;
+
+
 
 
     while (running) {
-        processInput(player, running);
-        update(player, lava, camera);
-        render(renderer, player, lava, camera);
-        SDL_Delay(16.67);
+            while (SDL_PollEvent(&g_even))
+        {
+            player.processInput(g_even);
+        }
+
+
+            if (checkPause) {
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 128);
+    SDL_Rect pauseOverlay = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+    SDL_RenderFillRect(renderer, &pauseOverlay);
+    SDL_Delay(16.67);
     }
 
+
+
+else{
+    lava.y -= lava.vy;
+    lava.rect.y = lava.y;
+
+    camera.y = lava.y + lava.rect.h - SCREEN_HEIGHT;
+    if (camera.y < 0) camera.y = 0;
+
+
+    frame++;
+    if (frame > 300){
+        frame = 0;
+    }
+
+
+
+
+    SDL_Texture* currentBackground = backgroundTexture[frame/30 % 4];
+    SDL_RenderClear(renderer);
+
+    SDL_RenderCopy(renderer, currentBackground, NULL, NULL);
+
+
+    player.processInput(g_even);
+    player.render();
+    player.update();
+
+
+    object.render();
+    object.update();
+
+
+    SDL_SetRenderDrawColor(renderer, 255, 69, 0, 255);
+    SDL_Rect lavaRect = {0, SCREEN_HEIGHT - lava.rect.h, SCREEN_WIDTH, lava.rect.h};
+    SDL_RenderFillRect(renderer, &lavaRect);
+
+
+    SDL_RenderPresent(renderer);
+    SDL_Delay(16.67);
+}
+}
     destroy();
     return 0;
-}
+
+ }
 

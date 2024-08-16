@@ -1,3 +1,3 @@
-#include<stdio.h>
+#include "functions.hpp"
 
-void Load();
+int Load();

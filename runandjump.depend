@@ -1,13 +1,10 @@
 # depslib dependency file v1.0
-1723217801 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
-	<SDL.h>
-	<stdio.h>
-	<SDL_image.h>
-	<SDL_mixer.h>
-	<vector>
+1723826200 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
 	"headers/functions.hpp"
 	"headers/constants.hpp"
 	"headers/load.hpp"
+	"headers/player.hpp"
+	"headers/object.hpp"
 
 1722782976 c:\users\bruh\documents\github\run-and-jump\sdl2\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -441,10 +438,8 @@
 	<vector>
 	"constants.hpp"
 
-1723221943 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
-	<vector>
-	<SDL.h>
-	<SDL_mixer.h>
+1723826126 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
+	"functions.hpp"
 
 1723036239 c:\users\bruh\documents\github\run-and-jump\headers\handlecollision.cpp
 	<SDL.h>
@@ -454,28 +449,25 @@
 	"HandleCollision.hpp"
 	"constants.hpp"
 
-1723222182 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
-	<SDL.h>
-	<stdio.h>
-	<SDL_image.h>
-	<vector>
+1723826136 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
 	"functions.hpp"
-	"constants.hpp"
 
-1723168981 c:\users\bruh\documents\github\run-and-jump\headers\functions.hpp
+1723825032 c:\users\bruh\documents\github\run-and-jump\headers\functions.hpp
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_mixer.h>
 	<vector>
-	"constants.hpp"
-
-1723221191 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
-	"constants.hpp"
-
-1723221017 source:c:\users\bruh\documents\github\run-and-jump\headers\load.cpp
-	<SDL.h>
 	<stdio.h>
+	"load.hpp"
 	"constants.hpp"
-	"functions.hpp"
+	"object.hpp"
+	"player.hpp"
+
+1723826125 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
+	"constants.hpp"
+
+1723814907 source:c:\users\bruh\documents\github\run-and-jump\headers\load.cpp
+	"load.hpp"
 
 1723043071 c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
 	<SDL.h>
@@ -485,8 +477,8 @@
 	"functions.hpp"
 	"constants.hpp"
 
-1723108604 c:\users\bruh\documents\github\run-and-jump\headers\load.hpp
-	<stdio.h>
+1723807328 c:\users\bruh\documents\github\run-and-jump\headers\load.hpp
+	"functions.hpp"
 
 1705857752 c:\users\bruh\documents\github\run-and-jump\sdl2_mixer\include\sdl2\sdl_mixer.h
 	"SDL_stdinc.h"
@@ -496,4 +488,35 @@
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
+
+1723737024 source:c:\users\bruh\documents\github\run-and-jump\baseobject.cpp
+	<SDL.h>
+	<SDL_image.h>
+
+1723824745 c:\users\bruh\documents\github\run-and-jump\headers\player.hpp
+	"functions.hpp"
+
+1723821904 c:\users\bruh\documents\github\run-and-jump\headers\platform.hpp
+	"functions.hpp"
+
+1723783295 c:\users\bruh\documents\github\run-and-jump\headers\player.cpp
+	"player.hpp"
+
+1723821659 source:c:\users\bruh\documents\github\run-and-jump\headers\platform.cpp
+	"platform.hpp"
+
+1723826266 source:c:\users\bruh\documents\github\run-and-jump\headers\player.cpp
+	"player.hpp"
+
+1723801865 source:c:\users\bruh\documents\github\run-and-jump\headers\lava.cpp
+	"Lava.hpp"
+
+1723801883 c:\users\bruh\documents\github\run-and-jump\headers\lava.hpp
+	"functions.hpp"
+
+1723822437 c:\users\bruh\documents\github\run-and-jump\headers\object.hpp
+	"functions.hpp"
+
+1723823952 source:c:\users\bruh\documents\github\run-and-jump\headers\object.cpp
+	"object.hpp"
 
