@@ -11,7 +11,8 @@
 int main(int argc, char* argv[])
  {
     Load();
-
+    current_gStatus = PLAY;
+    lava.vy = 0;
 
     Player player;
     Object object;
@@ -28,10 +29,13 @@ int main(int argc, char* argv[])
         }
 
     if (checkPause) {
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 128);
-    SDL_Rect pauseScreen = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-    SDL_RenderFillRect(renderer, &pauseScreen);
-    SDL_Delay(16.67);
+         SDL_Color white = { 255, 255, 255, 255 };
+        SDL_Texture* menuText = loadTextTexture("PAUSED", white);
+        SDL_Rect textRect = { 800, 450, 500, 300 };
+        SDL_RenderCopy(renderer, menuText, NULL, &textRect);
+        SDL_DestroyTexture(menuText);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16.67);
     }
 
 

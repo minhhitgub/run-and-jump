@@ -10,26 +10,34 @@
     Object::Object(){
 
 
+         platforms.push_back(Object {SDL_Rect{560, LAVA_DEPTH - 5900, 180, 50}, 0, 0, 0, 0, 0, 0});
+         platforms.push_back(Object {SDL_Rect{580, LAVA_DEPTH - 5700, 140, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 5500, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 5300, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 5100, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{800, LAVA_DEPTH - 5000, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 4900, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{1200, LAVA_DEPTH - 4800, 200, 50}, 0, 0, 0, 0, 0, 0});
 
 
 
 
+        platforms.push_back(Object {SDL_Rect{800, LAVA_DEPTH - 4600, 100, 50}, -5, 0, 800, 1200, 0, 0});
 
 
+       platforms.push_back(Object {SDL_Rect{700, LAVA_DEPTH - 4400, 100, 50}, -5, 0, 200, 750, 0, 0});     platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 4400, 100, 50}, -3, 0, 800, 1200, 0, 0});
 
+        platforms.push_back(Object {SDL_Rect{500, LAVA_DEPTH - 4200, 100, 50}, -3, 0, 500, 1000, 0, 0});     platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 4200, 100, 50}, -6, 0, 1000, 1400, 0, 0});
 
-
-
-        platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 4200, 100, 50}, -3, 0, 800, 1200, 0, 0});
-
-        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 4000, 100, 50}, -3, 0, 600, 1000, 0, 0});    platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 4000, 100, 50}, -6, 0, 1000, 1400, 0, 0});
         platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 4000, 100, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 3800, 100, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 3600, 100, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 3400, 100, 50}, 0, 0, 0, 0, 0, 0});
 
 
-        platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 3300, 50, 50}, -5, -5, 400, 1100, LAVA_DEPTH - 3300, LAVA_DEPTH - 2600});
+        platforms.push_back(Object {SDL_Rect{1100, LAVA_DEPTH - 2600, 50, 50}, -3, -3, 750, 1100, LAVA_DEPTH - 2950, LAVA_DEPTH - 2600});
+        platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 3300, 50, 50}, -3, -3, 400, 750, LAVA_DEPTH - 3300, LAVA_DEPTH - 2950});
+
 
 
          platforms.push_back(Object {SDL_Rect{1200, LAVA_DEPTH - 2500, 50, 50}, 0, 0, 0, 0, 0, 0});
@@ -64,7 +72,7 @@
 
 
         dragons.push_back(Object {SDL_Rect{0, LAVA_DEPTH -1650, 200, 200}, 0, 0, 0, 0, 0, 0});
-        fires.push_back(Object {SDL_Rect{200, LAVA_DEPTH -1650, 1200, 200}, 0, 0, 0, 0, 0, 0});
+        fires.push_back(Object {SDL_Rect{200, LAVA_DEPTH -1700, 1200, 200}, 0, 0, 0, 0, 0, 0});
 
 
         dragons.push_back(Object {SDL_Rect{1400, LAVA_DEPTH -1300, 200, 200}, 0, 0, 0, 0, 0, 0});
@@ -106,7 +114,7 @@
             }
     }
 
-    if (frame >= 0 && frame <= 29 || frame >= 150 && frame <= 179 ){
+    if (frame >= 0 && frame <= 14 || frame >= 150 && frame <= 164 ){
     for (const auto& it : fires) {
             if(it.rect.x%2==0){
             SDL_Rect fireRect = { it.rect.x, it.rect.y - camera.y , it.rect.w, it.rect.h };

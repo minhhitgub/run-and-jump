@@ -3,8 +3,8 @@
 
 
 Player::Player() {
-    x = 400;
-    y = LAVA_DEPTH - 390;
+    x = 600;
+    y = LAVA_DEPTH - 5300;
     vx = 0;
     vy = 0;
     isJumping = false;
@@ -96,7 +96,13 @@ void Player::handleCollision()
                     y = it.rect.y - PLAYER_HEIGHT ;
                     vy = 0;
                     isJumping = false;
+                    if (it.vx !=0 && it.vy !=0){
                     x+=it.vx;
+                    }
+                    if (it.vx !=0 && it.vy ==0){
+                    x+=it.vx*2;
+                    }
+
 
 
 

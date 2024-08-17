@@ -4,7 +4,7 @@ SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
 
 
-Lava lava = {10000, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
+Lava lava = {5000, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
 
 
 int LAVA_SPEED = 0;
