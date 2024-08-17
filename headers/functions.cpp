@@ -19,7 +19,7 @@ void processInput(SDL_Event& e)
     if (e.type == SDL_KEYDOWN) {
         switch (e.key.keysym.sym) {
             case SDLK_RETURN:
-                 lava.vy = 2;
+                 lava.vy = 1;
              current_gStatus = PLAY;
 
              break;
@@ -70,6 +70,28 @@ SDL_Texture* loadTextTexture(const std::string& text, const SDL_Color& color)
     return textTexture;
 }
 
+
+
+void showHealth()
+{
+    static std::vector<SDL_Texture*> healthTextures;
+    static std::vector<SDL_Rect> healthPositions;
+
+
+    if (healthTextures.empty()) {
+        for (int i = 0; i < 5; i++) {
+            SDL_Texture* healthTexture = loadTexture("image/health.png", renderer);
+            healthTextures.push_back(healthTexture);
+            SDL_Rect pos = { i * 50, 20, 80, 80 };
+            healthPositions.push_back(pos);
+        }
+    }
+
+
+    for (int i = 0; i < healthTextures.size()-healthLoss; i++) {
+        SDL_RenderCopy(renderer, healthTextures[i], NULL, &healthPositions[i]);
+    }
+}
 
 
 

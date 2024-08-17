@@ -3,8 +3,9 @@
 
 
 Player::Player() {
-    x = 600;
-    y = LAVA_DEPTH - 5300;
+
+    x = 900;
+    y = LAVA_DEPTH - 6300;
     vx = 0;
     vy = 0;
     isJumping = false;
@@ -77,6 +78,12 @@ void Player::update()
       //  exit(0);
    // }
 
+     if(healthLoss == 5)
+     {
+         printf("Game Over");
+         destroy();
+         exit(0);
+     }
 }
 }
 
@@ -92,7 +99,7 @@ void Player::handleCollision()
 
         if (checkCollision(playerRect, it.rect)) {
             if (playerRect.y + playerRect.h > it.rect.y && playerRect.y < it.rect.y + it.rect.h) {
-                if (vy > 0 && playerRect.y + playerRect.h - vy <= it.rect.y + 5) {
+                if (vy > 0 && playerRect.y + playerRect.h - vy <= it.rect.y +5) {
                     y = it.rect.y - PLAYER_HEIGHT ;
                     vy = 0;
                     isJumping = false;
@@ -127,12 +134,15 @@ void Player::handleCollision()
     }
 
 
-if (frame >= 0 && frame <= 29 || frame >= 150 && frame <= 179 ){
+if (frame >= 0 && frame <= 14 || frame >= 150 && frame <= 164 ){
     for (const auto& fire : Object::fires) {
 
         if (checkCollision(playerRect, fire.rect)) {
                 currentState = HIT;
-
+                if(!hitRecently)
+                healthLoss++;
+                hitRecently = true;
+                time = 0;
             }
 
         }

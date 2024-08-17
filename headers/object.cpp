@@ -9,11 +9,17 @@
 
     Object::Object(){
 
+        platforms.push_back(Object {SDL_Rect{300, LAVA_DEPTH - 6700, 1300, 80}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 6500, 500, 100}, 0, 0, 0, 0, 0, 0});  //platforms.push_back(Object {SDL_Rect{800, LAVA_DEPTH - 6500, 400, 100}, 0, 0, 0, 0, 0, 0});
 
-         platforms.push_back(Object {SDL_Rect{560, LAVA_DEPTH - 5900, 180, 50}, 0, 0, 0, 0, 0, 0});
-         platforms.push_back(Object {SDL_Rect{580, LAVA_DEPTH - 5700, 140, 50}, 0, 0, 0, 0, 0, 0});
-        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 5500, 100, 50}, 0, 0, 0, 0, 0, 0});
-        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 5300, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 6400, 700, 50}, 0, 0, 0, 0, 0, 0});
+
+        platforms.push_back(Object {SDL_Rect{700, LAVA_DEPTH - 6200, 900, 50}, 0, 0, 0, 0, 0, 0});
+         platforms.push_back(Object {SDL_Rect{530, LAVA_DEPTH - 6050, 240, 50}, 0, 0, 0, 0, 0, 0});
+         platforms.push_back(Object {SDL_Rect{560, LAVA_DEPTH - 5860, 180, 50}, 0, 0, 0, 0, 0, 0});
+         platforms.push_back(Object {SDL_Rect{580, LAVA_DEPTH - 5670, 140, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 5480, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 5290, 100, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 5100, 100, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{800, LAVA_DEPTH - 5000, 100, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 4900, 100, 50}, 0, 0, 0, 0, 0, 0});
@@ -69,6 +75,8 @@
 
 
 
+        dragons.push_back(Object {SDL_Rect{0, LAVA_DEPTH - 6700, 200, 200}, 0, 0, 0, 0, 0, 0});
+        fires.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 6690, 1200, 190}, 0, 0, 0, 0, 0, 0});
 
 
         dragons.push_back(Object {SDL_Rect{0, LAVA_DEPTH -1650, 200, 200}, 0, 0, 0, 0, 0, 0});

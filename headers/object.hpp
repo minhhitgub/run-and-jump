@@ -19,7 +19,7 @@ public:
     static std::vector<Object> dragons;
     static std::vector<Object> fires;
     Object(SDL_Rect rect, int vx, int vy, int minX, int maxX, int minY, int maxY ) : rect(rect), vx(vx), vy(vy), minX(minX), maxX(maxX), minY(minY), maxY(maxY) {};
-    void initObject();
+
     void render();
     void update();
 };

@@ -18,8 +18,6 @@ int main(int argc, char* argv[])
     Object object;
 
 
-
-
     while (running) {
             while (SDL_PollEvent(&g_even))
         {
@@ -29,6 +27,7 @@ int main(int argc, char* argv[])
         }
 
     if (checkPause) {
+            showHealth();
          SDL_Color white = { 255, 255, 255, 255 };
         SDL_Texture* menuText = loadTextTexture("PAUSED", white);
         SDL_Rect textRect = { 800, 450, 500, 300 };
@@ -42,6 +41,7 @@ int main(int argc, char* argv[])
 
 else{
 
+
     lava.y -= lava.vy;
     lava.rect.y = lava.y;
 
@@ -53,7 +53,11 @@ else{
     if (frame > 300){
         frame = 0;
     }
-
+    time++;
+    if (time>50)
+    {
+        hitRecently = false;
+    }
 
 
 
@@ -62,15 +66,19 @@ else{
     player.update();
 
 
+
     object.render();
     object.update();
+
+
+
 
 
     SDL_SetRenderDrawColor(renderer, 255, 69, 0, 255);
     SDL_Rect lavaRect = {0, SCREEN_HEIGHT - lava.rect.h, SCREEN_WIDTH, lava.rect.h};
     SDL_RenderFillRect(renderer, &lavaRect);
 
-
+    showHealth();
     SDL_RenderPresent(renderer);
     SDL_Delay(16.67);
 }

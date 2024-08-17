@@ -4,7 +4,7 @@ SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
 
 
-Lava lava = {5000, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
+Lava lava = {3900, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
 
 
 int LAVA_SPEED = 0;
@@ -25,3 +25,9 @@ bool checkPause = false;
 SDL_Window* window = nullptr;
 Mix_Music* gMusic = nullptr;
 gameStatus current_gStatus = MENU;
+
+int healthLoss = 0;
+
+ bool hitRecently = false;
+
+ int time = 0;

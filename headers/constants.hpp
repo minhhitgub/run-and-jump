@@ -2,6 +2,7 @@
 
 #include "functions.hpp"
 
+
 const int SCREEN_WIDTH = 1600;
 const int SCREEN_HEIGHT = 900;
 
@@ -67,4 +68,8 @@ extern SDL_Window* window;
 
 extern Mix_Music* gMusic;
 
+extern int healthLoss;
 
+extern bool hitRecently;
+
+extern int time;
