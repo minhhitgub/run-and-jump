@@ -13,6 +13,9 @@ checkPause = !checkPause;
 }
 
 
+
+
+
 SDL_Texture* loadTexture(const char* file_path, SDL_Renderer* renderer) {
     SDL_Surface* surface = IMG_Load(file_path);
     if (!surface) {

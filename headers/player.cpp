@@ -70,11 +70,11 @@ void Player::update()
     if (x < 0) x = 0;
     if (x + PLAYER_WIDTH > SCREEN_WIDTH) x = SCREEN_WIDTH - PLAYER_WIDTH;
     handleCollision();
-    if (y + PLAYER_HEIGHT > lava.y) {
-            printf("Game Over");
-        destroy();
-        exit(0);
-    }
+    //if (y + PLAYER_HEIGHT > lava.y) {
+       //     printf("Game Over");
+       // destroy();
+      //  exit(0);
+   // }
 
 }
 
@@ -82,14 +82,19 @@ void Player::handleCollision()
 {
     SDL_Rect playerRect = { x, y, PLAYER_WIDTH, PLAYER_HEIGHT };
 
-    for (const auto& it : Object::objects) {
+
+
+    for (const auto& it : Object::platforms) {
+
+
         if (checkCollision(playerRect, it.rect)) {
             if (playerRect.y + playerRect.h > it.rect.y && playerRect.y < it.rect.y + it.rect.h) {
-                if (vy > 0 && playerRect.y + playerRect.h - vy <= it.rect.y) {
+                if (vy > 0 && playerRect.y + playerRect.h - vy <= it.rect.y + 5) {
                     y = it.rect.y - PLAYER_HEIGHT;
                     vy = 0;
                     isJumping = false;
-                     x += it.vx;
+
+
                 } else if (vy < 0 && playerRect.y >= it.rect.y + it.rect.h + vy) {
                     y = it.rect.y + it.rect.h;
                     vy = 0;
@@ -103,11 +108,12 @@ void Player::handleCollision()
                     x = it.rect.x + it.rect.w;
                 }
             }
+
         }
     }
 
 
-if (frame >= 0 && frame <= 29 ){
+if (frame >= 0 && frame <= 29 || frame >= 150 && frame <= 179 ){
     for (const auto& fire : Object::fires) {
 
         if (checkCollision(playerRect, fire.rect)) {
@@ -118,6 +124,7 @@ if (frame >= 0 && frame <= 29 ){
         }
     }
 }
+
 
 void Player::render()
 {

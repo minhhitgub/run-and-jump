@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1723826200 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
+1723865864 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
 	"headers/functions.hpp"
 	"headers/constants.hpp"
 	"headers/load.hpp"
@@ -438,7 +438,7 @@
 	<vector>
 	"constants.hpp"
 
-1723826126 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
+1723869094 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
 	"functions.hpp"
 
 1723036239 c:\users\bruh\documents\github\run-and-jump\headers\handlecollision.cpp
@@ -449,21 +449,24 @@
 	"HandleCollision.hpp"
 	"constants.hpp"
 
-1723826136 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
+1723861585 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
 	"functions.hpp"
 
-1723825032 c:\users\bruh\documents\github\run-and-jump\headers\functions.hpp
+1723861336 c:\users\bruh\documents\github\run-and-jump\headers\functions.hpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
+	<SDL_ttf.h>
 	<vector>
+	<string>
 	<stdio.h>
 	"load.hpp"
 	"constants.hpp"
 	"object.hpp"
 	"player.hpp"
+	"textObject.hpp"
 
-1723826125 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
+1723869484 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
 	"constants.hpp"
 
 1723814907 source:c:\users\bruh\documents\github\run-and-jump\headers\load.cpp
@@ -505,7 +508,7 @@
 1723821659 source:c:\users\bruh\documents\github\run-and-jump\headers\platform.cpp
 	"platform.hpp"
 
-1723826266 source:c:\users\bruh\documents\github\run-and-jump\headers\player.cpp
+1723866465 source:c:\users\bruh\documents\github\run-and-jump\headers\player.cpp
 	"player.hpp"
 
 1723801865 source:c:\users\bruh\documents\github\run-and-jump\headers\lava.cpp
@@ -514,9 +517,18 @@
 1723801883 c:\users\bruh\documents\github\run-and-jump\headers\lava.hpp
 	"functions.hpp"
 
-1723822437 c:\users\bruh\documents\github\run-and-jump\headers\object.hpp
+1723869439 c:\users\bruh\documents\github\run-and-jump\headers\object.hpp
 	"functions.hpp"
 
-1723823952 source:c:\users\bruh\documents\github\run-and-jump\headers\object.cpp
+1723869450 source:c:\users\bruh\documents\github\run-and-jump\headers\object.cpp
 	"object.hpp"
+
+1723861344 c:\users\bruh\documents\github\run-and-jump\headers\textobject.hpp
+
+1705848875 c:\users\bruh\documents\github\run-and-jump\sdl2_ttf\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1723861344 source:c:\users\bruh\documents\github\run-and-jump\headers\textobject.cpp
 

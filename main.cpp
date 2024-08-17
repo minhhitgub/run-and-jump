@@ -24,19 +24,25 @@ int main(int argc, char* argv[])
             while (SDL_PollEvent(&g_even))
         {
             player.processInput(g_even);
+
         }
 
 
             if (checkPause) {
+
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 128);
-    SDL_Rect pauseOverlay = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-    SDL_RenderFillRect(renderer, &pauseOverlay);
+    SDL_Rect pauseScreen = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+    SDL_RenderFillRect(renderer, &pauseScreen);
+
+
+
     SDL_Delay(16.67);
     }
 
 
 
 else{
+
     lava.y -= lava.vy;
     lava.rect.y = lava.y;
 

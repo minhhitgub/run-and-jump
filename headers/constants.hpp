@@ -14,7 +14,7 @@ const int JUMP_SPEED = -20;
 const int DRAGON_X = 100;
 const int DRAGON_Y = 300;
 
-const int LAVA_SPEED = 2;
+extern int LAVA_SPEED  ;
 const int LAVA_DEPTH = 4000;
 
 
@@ -40,7 +40,7 @@ extern bool running;
 
 extern Lava lava;
 
-
+extern SDL_Texture* g_menuImg;
 
 extern SDL_Texture* backgroundTexture[4];
 
