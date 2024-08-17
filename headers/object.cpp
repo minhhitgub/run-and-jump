@@ -9,22 +9,48 @@
 
     Object::Object(){
 
+
+
+
+
+
+
+
+
+
+
+
+        platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 4200, 100, 50}, -3, 0, 800, 1200, 0, 0});
+
+        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 4000, 100, 50}, -3, 0, 600, 1000, 0, 0});    platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 4000, 100, 50}, -6, 0, 1000, 1400, 0, 0});
+        platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 4000, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 3800, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 3600, 100, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 3400, 100, 50}, 0, 0, 0, 0, 0, 0});
+
+
+        platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 3300, 50, 50}, -5, -5, 400, 1100, LAVA_DEPTH - 3300, LAVA_DEPTH - 2600});
+
+
+         platforms.push_back(Object {SDL_Rect{1200, LAVA_DEPTH - 2500, 50, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 2300, 50, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{800, LAVA_DEPTH - 2100, 50, 50}, 0, 0, 0, 0, 0, 0});
-        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 1900, 50, 50}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{900, LAVA_DEPTH - 1900, 50, 50}, 0, 0, 0, 0, 0, 0});
 
 
-         platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 1900, 100, 150}, 0, 0, 0, 0, 0, 0});
-        platforms.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 1700, 50, 50}, 0, 0, 0, 0, 0, 0});
+         platforms.push_back(Object {SDL_Rect{1150, LAVA_DEPTH - 1900, 100, 150}, 0, 0, 0, 0, 0, 0});
+        platforms.push_back(Object {SDL_Rect{1350, LAVA_DEPTH - 1700, 50, 50}, 0, 0, 0, 0, 0, 0});
 
 
 
-        platforms.push_back(Object {SDL_Rect{200, LAVA_DEPTH - 1500, 600, 50}, 0, 0, 0, 0, 0, 0});
+
         platforms.push_back(Object {SDL_Rect{1000, LAVA_DEPTH - 1500, 500, 50}, 0, 0, 0, 0, 0, 0});
 
 
-        platforms.push_back(Object {SDL_Rect{0, LAVA_DEPTH - 300, 200, 50}, 0, -3, 0, 1000, LAVA_DEPTH - 500 , LAVA_DEPTH - 200});
 
+        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 1400, 200, 50}, 0, 0, 0, 0, 0 , 0});
+        platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 1400, 200, 50}, 0, 0, 0, 0, 0 , 0});
+        platforms.push_back(Object {SDL_Rect{400, LAVA_DEPTH - 1200, 200, 50}, 0, 0, 0, 0, 0 , 0});
         platforms.push_back(Object {SDL_Rect{600, LAVA_DEPTH - 1000, 200, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{700, LAVA_DEPTH - 900, 200, 50}, 0, 0, 0, 0, 0, 0});
         platforms.push_back(Object {SDL_Rect{900, LAVA_DEPTH - 750, 200, 50}, 0, 0, 0, 0, 0, 0});
@@ -103,18 +129,19 @@
             it.rect.y += it.vy;
 
 
-    if(it.minX!=0 || it.minY!=0){
+    if(it.minX!=0){
 
     if (it.rect.x <= it.minX) {
             it.rect.x = it.minX;
-            it.vx = -abs(it.vx);
+            it.vx = abs(it.vx);
         }
         else if (it.rect.x + it.rect.w >= it.maxX) {
             it.rect.x = it.maxX - it.rect.w;
-            it.vx = abs(it.vx);
+            it.vx = -abs(it.vx);
         }
+    }
 
-
+    if (it.minY!=0){
     if (it.rect.y <= it.minY) {
             it.rect.y = it.minY;
             it.vy = abs(it.vy);
@@ -136,13 +163,13 @@
             it.rect.y += it.vy;
     }
 
-    for (auto it = platforms.begin(); it != platforms.end();) {
-            if (checkCollision(it->rect, lava.rect)) {
-                it = platforms.erase(it);
-            } else {
-                it++;
-            }
-        }
+    //for (auto it = platforms.begin(); it != platforms.end();) {
+           // if (checkCollision(it->rect, lava.rect)) {
+        //        it = platforms.erase(it);
+       //     } else {
+        //        it++;
+      //      }
+       // }
         for (auto it = dragons.begin(); it != dragons.end();) {
             if (checkCollision(it->rect, lava.rect)) {
                 it = dragons.erase(it);

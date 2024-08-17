@@ -64,7 +64,13 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         }
 
 
-
+    if (TTF_Init() == -1) {
+        printf("Unable to initialize SDL_ttf: %s\n", TTF_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return -1;
+    }
 
 
 

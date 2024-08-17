@@ -4,10 +4,10 @@ SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
 
 
-Lava lava = {LAVA_DEPTH, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
-int LAVA_SPEED = 1;
+Lava lava = {10000, LAVA_SPEED, {0, 1200, SCREEN_WIDTH, 200}};
 
 
+int LAVA_SPEED = 0;
 
 SDL_Renderer* renderer = nullptr;
 SDL_Surface* surface = nullptr;
@@ -24,3 +24,4 @@ bool running = true;
 bool checkPause = false;
 SDL_Window* window = nullptr;
 Mix_Music* gMusic = nullptr;
+gameStatus current_gStatus = MENU;

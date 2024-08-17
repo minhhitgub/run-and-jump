@@ -10,7 +10,6 @@
 
 int main(int argc, char* argv[])
  {
-
     Load();
 
 
@@ -23,19 +22,15 @@ int main(int argc, char* argv[])
     while (running) {
             while (SDL_PollEvent(&g_even))
         {
+            processInput(g_even);
             player.processInput(g_even);
 
         }
 
-
-            if (checkPause) {
-
+    if (checkPause) {
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 128);
     SDL_Rect pauseScreen = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
     SDL_RenderFillRect(renderer, &pauseScreen);
-
-
-
     SDL_Delay(16.67);
     }
 
@@ -56,12 +51,6 @@ else{
     }
 
 
-
-
-    SDL_Texture* currentBackground = backgroundTexture[frame/30 % 4];
-    SDL_RenderClear(renderer);
-
-    SDL_RenderCopy(renderer, currentBackground, NULL, NULL);
 
 
     player.processInput(g_even);

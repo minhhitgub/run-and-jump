@@ -14,8 +14,8 @@ const int JUMP_SPEED = -20;
 const int DRAGON_X = 100;
 const int DRAGON_Y = 300;
 
-extern int LAVA_SPEED  ;
-const int LAVA_DEPTH = 4000;
+extern int LAVA_SPEED ;
+const int LAVA_DEPTH = 10000;
 
 
 struct Lava {
@@ -29,6 +29,14 @@ struct dragon {
     int y;
     SDL_Rect rect;
 };
+
+enum gameStatus {
+    MENU,
+    PLAY
+};
+
+extern gameStatus current_gStatus;
+
 
 static SDL_Event g_even;
 

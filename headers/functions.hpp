@@ -24,8 +24,9 @@ void render();
 
 void pause();
 
-
-
+void processInput(SDL_Event& e);
 SDL_Texture* loadTexture(const char* file_path, SDL_Renderer* renderer);
+
+SDL_Texture* loadTextTexture(const std::string& text, const SDL_Color& color);
 
 void destroy();
