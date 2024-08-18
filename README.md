@@ -1,7 +1,7 @@
 # RUN AND JUMP
 - Họ và tên: Nguyễn Hùng Minh
 - Mã sinh viên: 22028294
-- Demo: 
+- Demo: https://drive.google.com/file/d/1TmIxn1bGJPbDof15eFUNPb5ugU2oM-he/view?usp=sharing
 # Giới thiệu game
 Run and Jump thuộc thể loại game platformer chiều dọc, người chơi sẽ đóng vai chàng hiệp sĩ vượt chướng ngại vật để có thể thoát khỏi dung nham ở dưới đang trào lên.
 # Mục lục
@@ -13,7 +13,7 @@ Run and Jump thuộc thể loại game platformer chiều dọc, người chơi 
 5. [Tài nguyên sử dụng](#5-Tài-nguyên-sử-dụng)
 
 ## 0. Cách tải game
-đang hoàn thánh
+đang hoàn thành
 ## 1 . Bắt đầu game
 Đây là màn hình khi vừa khởi động trò chơi, nhất enter để có thể bắt đầu 
 ![image](/preview/startgame.png)
@@ -44,15 +44,22 @@ Run and Jump thuộc thể loại game platformer chiều dọc, người chơi 
 
 ## 4. Nguồn tham khảo
   https://lazyfoo.net/tutorials/SDL/
+  
  https://www.youtube.com/watch?v=k1JGvJU707k&list=PLR7NDiX0QsfQQ2iFXsXepwH46wf3D4Y4C
 
 ## 5. Tài nguyên sử dụng
 https://opengameart.org/content/knight-and-knight-animation
+
 https://opengameart.org/content/handpainted-rock-walls
+
 https://www.chosic.com/free-music/epic/
+
 https://opengameart.org/content/fire-explode
+
 https://opengameart.org/content/heart-1616
+
 https://www.myinstants.com/en/instant/minecraft-damage-6455/
+
 https://www.pngitem.com/middle/iihoxhi_transparent-you-win-png-transparent-you-win-text/
 
   
