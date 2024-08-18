@@ -1,11 +1,10 @@
 # depslib dependency file v1.0
-1723909620 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
+1723995028 source:c:\users\bruh\documents\github\run-and-jump\main.cpp
 	"headers/functions.hpp"
 	"headers/constants.hpp"
 	"headers/load.hpp"
 	"headers/player.hpp"
 	"headers/object.hpp"
-	"headers/health.hpp"
 
 1722782976 c:\users\bruh\documents\github\run-and-jump\sdl2\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -439,7 +438,7 @@
 	<vector>
 	"constants.hpp"
 
-1723909620 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
+1723994518 c:\users\bruh\documents\github\run-and-jump\headers\constants.hpp
 	"functions.hpp"
 
 1723036239 c:\users\bruh\documents\github\run-and-jump\headers\handlecollision.cpp
@@ -450,10 +449,10 @@
 	"HandleCollision.hpp"
 	"constants.hpp"
 
-1723909179 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
+1723993421 source:c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
 	"functions.hpp"
 
-1723909769 c:\users\bruh\documents\github\run-and-jump\headers\functions.hpp
+1723992788 c:\users\bruh\documents\github\run-and-jump\headers\functions.hpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -466,10 +465,10 @@
 	"object.hpp"
 	"player.hpp"
 
-1723909620 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
+1723994682 source:c:\users\bruh\documents\github\run-and-jump\headers\constants.cpp
 	"constants.hpp"
 
-1723880536 source:c:\users\bruh\documents\github\run-and-jump\headers\load.cpp
+1723994390 source:c:\users\bruh\documents\github\run-and-jump\headers\load.cpp
 	"load.hpp"
 
 1723043071 c:\users\bruh\documents\github\run-and-jump\headers\functions.cpp
@@ -496,7 +495,7 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1723905616 c:\users\bruh\documents\github\run-and-jump\headers\player.hpp
+1723948912 c:\users\bruh\documents\github\run-and-jump\headers\player.hpp
 	"functions.hpp"
 
 1723821904 c:\users\bruh\documents\github\run-and-jump\headers\platform.hpp
@@ -508,7 +507,7 @@
 1723821659 source:c:\users\bruh\documents\github\run-and-jump\headers\platform.cpp
 	"platform.hpp"
 
-1723909672 source:c:\users\bruh\documents\github\run-and-jump\headers\player.cpp
+1723995142 source:c:\users\bruh\documents\github\run-and-jump\headers\player.cpp
 	"player.hpp"
 
 1723801865 source:c:\users\bruh\documents\github\run-and-jump\headers\lava.cpp
@@ -517,10 +516,10 @@
 1723801883 c:\users\bruh\documents\github\run-and-jump\headers\lava.hpp
 	"functions.hpp"
 
-1723903071 c:\users\bruh\documents\github\run-and-jump\headers\object.hpp
+1723976196 c:\users\bruh\documents\github\run-and-jump\headers\object.hpp
 	"functions.hpp"
 
-1723905140 source:c:\users\bruh\documents\github\run-and-jump\headers\object.cpp
+1723992484 source:c:\users\bruh\documents\github\run-and-jump\headers\object.cpp
 	"object.hpp"
 
 1723861344 c:\users\bruh\documents\github\run-and-jump\headers\textobject.hpp
@@ -538,4 +537,10 @@
 
 1723908610 source:c:\users\bruh\documents\github\run-and-jump\headers\health.cpp
 	"health.hpp"
+
+1723941586 c:\users\bruh\documents\github\run-and-jump\headers\wind.hpp
+	"functions.hpp"
+
+1723952087 source:c:\users\bruh\documents\github\run-and-jump\headers\wind.cpp
+	"wind.hpp"
 

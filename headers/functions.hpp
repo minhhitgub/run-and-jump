@@ -16,12 +16,7 @@
 #include "player.hpp"
 
 
-
-
 bool checkCollision(const SDL_Rect& player, const SDL_Rect& obs);
-
-
-
 
 void pause();
 
@@ -33,3 +28,4 @@ SDL_Texture* loadTextTexture(const std::string& text, const SDL_Color& color);
 void showHealth();
 
 void destroy();
+

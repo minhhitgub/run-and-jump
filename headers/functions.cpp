@@ -95,13 +95,12 @@ void showHealth()
 
 
 
-
-
-
-
 void destroy()
 {
-    SDL_DestroyTexture(backgroundTexture[1]);
+    for (int i = 0; i< 4; i++)
+    {
+    SDL_DestroyTexture(backgroundTexture[i]);
+    }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

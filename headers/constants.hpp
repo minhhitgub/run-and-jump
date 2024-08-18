@@ -16,7 +16,7 @@ const int DRAGON_X = 100;
 const int DRAGON_Y = 300;
 
 extern int LAVA_SPEED ;
-const int LAVA_DEPTH = 10000;
+const int LAVA_DEPTH = 16000;
 
 
 struct Lava {
@@ -33,7 +33,8 @@ struct dragon {
 
 enum gameStatus {
     MENU,
-    PLAY
+    PLAY,
+    OVER
 };
 
 extern gameStatus current_gStatus;
@@ -52,7 +53,8 @@ extern Lava lava;
 extern SDL_Texture* g_menuImg;
 
 extern SDL_Texture* backgroundTexture[4];
-
+extern SDL_Texture* victoryTexture;
+extern SDL_Texture* overTexture;
 extern SDL_Texture* obstacleTexture;
 extern SDL_Texture* dragonTexture[4];
 
@@ -68,8 +70,14 @@ extern SDL_Window* window;
 
 extern Mix_Music* gMusic;
 
+extern Mix_Chunk* hitSound;
+
 extern int healthLoss;
 
 extern bool hitRecently;
 
 extern int time;
+
+extern bool windAffected;
+
+

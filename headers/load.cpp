@@ -33,7 +33,8 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
    backgroundTexture[1] = loadTexture("image/bg2.png", renderer);
    backgroundTexture[2] = loadTexture("image/bg3.png", renderer);
    backgroundTexture[3] = loadTexture("image/bg4.png", renderer);
-
+   victoryTexture = loadTexture("image/victory.png", renderer);
+   overTexture = loadTexture("image/gameOver.png", renderer);
 
 
 
@@ -53,6 +54,7 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 
 
     gMusic = Mix_LoadMUS("music/backgroundMusic.mp3");
+    hitSound = Mix_LoadWAV("music/hitSound.wav");
     if (!gMusic)
         {
             printf("Failed to load music: %s\n", Mix_GetError());

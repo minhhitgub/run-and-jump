@@ -4,8 +4,8 @@
 
 Player::Player() {
 
-    x = 900;
-    y = LAVA_DEPTH - 6300;
+    x = 300;
+    y = LAVA_DEPTH - 380;
     vx = 0;
     vy = 0;
     isJumping = false;
@@ -19,6 +19,9 @@ Player::Player() {
 Player::~Player(){
 ;
 }
+
+
+
 
 
 void Player::processInput(SDL_Event& e)
@@ -61,6 +64,10 @@ void Player::processInput(SDL_Event& e)
 void Player::update()
 {
     if (current_gStatus == PLAY) {
+
+
+
+
     x += vx;
     y += vy;
 
@@ -72,18 +79,16 @@ void Player::update()
 
 
 
-    //if (y + PLAYER_HEIGHT > lava.y) {
-       //     printf("Game Over");
-       // destroy();
-      //  exit(0);
-   // }
+    if (y + PLAYER_HEIGHT > lava.y) {
+            currentState = HIT;
+         current_gStatus = OVER;
+    }
 
-     if(healthLoss == 5)
+    if(healthLoss == 5)
      {
-         printf("Game Over");
-         destroy();
-         exit(0);
+        current_gStatus = OVER;
      }
+
 }
 }
 
@@ -94,15 +99,27 @@ void Player::handleCollision()
 
 
 
-    for (const auto& it : Object::platforms) {
+
+    for ( auto& it : Object::platforms) {
 
 
         if (checkCollision(playerRect, it.rect)) {
+                if(it.canTriggerUp)
+                {
+                    it.vy = -1  ;
+                    it.canTriggerUp = false;
+                }
+                if(it.canTriggerDown)
+                {
+                    it.vy = 1;
+                    it.canTriggerDown = false;
+                }
             if (playerRect.y + playerRect.h > it.rect.y && playerRect.y < it.rect.y + it.rect.h) {
-                if (vy > 0 && playerRect.y + playerRect.h - vy <= it.rect.y +5) {
+                if (vy > 0 && playerRect.y + playerRect.h - vy <= it.rect.y + 7 ) {
                     y = it.rect.y - PLAYER_HEIGHT ;
                     vy = 0;
                     isJumping = false;
+
                     if (it.vx !=0 && it.vy !=0){
                     x+=it.vx;
                     }
@@ -120,12 +137,13 @@ void Player::handleCollision()
             }
 
             if (playerRect.x + playerRect.w > it.rect.x && playerRect.x < it.rect.x + it.rect.w) {
-                if (vx > 0 && playerRect.x + playerRect.w - vx <= it.rect.x+5) {
+                if (vx > 0 && playerRect.x + playerRect.w - vx <= it.rect.x + 7) {
                     x = it.rect.x - PLAYER_WIDTH;
                 } else if (vx < 0 && playerRect.x >= it.rect.x + it.rect.w + vx) {
                     x = it.rect.x + it.rect.w;
                 }
             }
+
             if(it.vy>0){y+=it.vy*2;}
 
 
@@ -140,13 +158,20 @@ if (frame >= 0 && frame <= 14 || frame >= 150 && frame <= 164 ){
         if (checkCollision(playerRect, fire.rect)) {
                 currentState = HIT;
                 if(!hitRecently)
+                {
                 healthLoss++;
+                Mix_PlayChannel(-1, hitSound, 0);
                 hitRecently = true;
                 time = 0;
+                }
             }
 
         }
     }
+
+
+
+
 }
 
 
@@ -179,14 +204,6 @@ void Player::render()
     }
 
 
-    if (current_gStatus == MENU) {
 
-
-        SDL_Color white = { 255, 255, 255, 255 };
-        SDL_Texture* menuText = loadTextTexture("Start Game", white);
-        SDL_Rect textRect = { 800, 450, 500, 300 };
-        SDL_RenderCopy(renderer, menuText, NULL, &textRect);
-        SDL_DestroyTexture(menuText);
-    }
 
 }
